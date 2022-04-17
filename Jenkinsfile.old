@@ -28,22 +28,21 @@ pipeline {
          sh 'chmod +x owasp-dependency-check.sh'
          sh 'bash owasp-dependency-check.sh'
          sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
-        
-      }
+        }
     }
   
       stage ('Build') {
         steps {
         sh 'mvn clean package'
-       }
+      }
     }
     
      stage ('Deploy-To-Tomcat') {
             steps {
             sshagent(['tomcat']) {
-            sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@44.203.140.156:/prod/tomcat/webapps/webapp.war'
-              }      
-           }
+            sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@172.31.87.20:/prod/tomcat/webapps/webapp.war'
+           }      
+          }
          }
         }
        }
