@@ -1,7 +1,7 @@
 pipeline {
   agent any 
   tools {
-    maven3.6.3 'Maven3.6.3'
+    maven3.6.3 'Maven'
   }
   stages {
     stage ('Initialize') {
@@ -9,6 +9,7 @@ pipeline {
         sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
-            ''' 
-      }
+           ''' 
+           }
     }
+}
