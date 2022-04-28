@@ -47,6 +47,7 @@ pipeline {
           sh 'cat target/sonar/report-task.txt'
         }
       }
+     }
     
   stage ('Deploy-To-Tomcat') {
           steps {
